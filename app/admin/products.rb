@@ -14,7 +14,7 @@ ActiveAdmin.register Product do
   #   permitted
   # end
 
-  permit_params :title, :description, :price, :image, product_categories_attributes: [:id, :product_id, :category_id, :_destroy]
+  permit_params :title, :description, :price, :image, product_categories_attributes: %i[id product_id category_id _destroy]
 
   index do
     selectable_column
@@ -24,19 +24,19 @@ ActiveAdmin.register Product do
     column :price
     column :image
     column :categories do |product|
-      product.categories.map { |p| p.title }.join(", ").html_safe
+      product.categories.map(&:title).join(', ').html_safe
     end
     actions
   end
 
-  show do |product|
+  show do |_product|
     attributes_table do
       row :title
       row :description
       row :price
       row :image
       row :categories do |product|
-        product.categories.map { |p| p.title }.join(", ").html_safe
+        product.categories.map(&:title).join(', ').html_safe
       end
     end
   end
@@ -44,7 +44,7 @@ ActiveAdmin.register Product do
   form do |f|
     f.semantic_errors *f.object.errors.keys
 
-    f.inputs "Product" do
+    f.inputs 'Product' do
       f.input :title
       f.input :description
       f.input :price
@@ -57,4 +57,3 @@ ActiveAdmin.register Product do
     f.actions
   end
 end
-

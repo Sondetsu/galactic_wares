@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       post :add_item
     end
   end
-  
+
   resources :search, only: [:index] do
     collection do
       get 'results'
