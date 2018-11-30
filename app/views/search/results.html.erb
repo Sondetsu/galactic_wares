@@ -1,0 +1,11 @@
+<h3>Results: <%= @products.size %></h3>
+
+<% if @products.empty? %>
+    <p>Sorry, we could not find any products under that search.</p>
+<% else %>
+    <ul>
+        <% @products.each do |product| %>
+            <li><%= link_to product.title, product%></li>
+        <% end %>
+    </ul>
+<% end %>
