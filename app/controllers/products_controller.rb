@@ -6,6 +6,16 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:id])    
+  end
+
+  def add_item
+    id = params[:id].to_i
+
+    session[:cart] << id unless session[:cart].include?(id)
+
+    flash[:success] = 'You have added an item to your cart.'
+
+    redirect_to root_url
   end
 end
