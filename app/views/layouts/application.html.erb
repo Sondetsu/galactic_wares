@@ -9,6 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
     <%= form_tag(results_search_index_path, method: "get") do %>
+      <%= collection_select(:search, :category, Category.order(:title), :id, :title, {:include_blank => 'All'}, {:class => "display_categories"}) %>
       <%= label_tag(:q, "Search for:") %>
       <%= text_field_tag(:q) %>
       <%= submit_tag("Search") %>
