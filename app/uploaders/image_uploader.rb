@@ -5,6 +5,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
+  # MiniMagick does not work in Rails for Windows, so these are not used.
   # version :thumb do
   #   process resize_to_fill: [50, 50]
   # end
