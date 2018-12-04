@@ -1,4 +1,4 @@
-<h3>Results: <%= @products.size %></h3>
+<h3>Results: <%= @count %></h3>
 
 <% if @products.empty? %>
     <p>Sorry, we could not find any products under that search.</p>
@@ -9,3 +9,4 @@
         <% end %>
     </ul>
 <% end %>
+<%= paginate @products %>
