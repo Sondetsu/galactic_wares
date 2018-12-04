@@ -1,5 +1,5 @@
 <h5><%= @product.title %></h5>
-<img src="<%= @product.image %>" >
+<img src="<%= @product.image %>" alt="Product Image">
 <p><%= @product.description %></p>
 <p><%= number_to_currency(@product.price) %></p>
 <%= link_to 'Add to Cart', add_item_product_path(@product), method: :post %>
